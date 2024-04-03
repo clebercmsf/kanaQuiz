@@ -1,0 +1,7 @@
+{
+  "name": "kanaQuiz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
