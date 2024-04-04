@@ -1,4 +1,3 @@
-@import "../../sass/main_button.scss";
 #container {
   text-align: center;
 
@@ -7,22 +6,15 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 13rem;
 }
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.container__img {
+  padding: 2rem;
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.container__button {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
 }

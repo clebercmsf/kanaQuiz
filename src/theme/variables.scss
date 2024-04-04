@@ -3,7 +3,6 @@
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-color-favorite: #cf3c4f;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -76,6 +75,10 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --color-primary: #e63946;
+  --color-primary-shade: rgb(220, 37, 70);
+  --color-secondary: #fffbe5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -243,8 +246,4 @@ html {
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
-}
-
-.ion-color-favorite {
-  --ion-color-base: #ffca22;
 }
