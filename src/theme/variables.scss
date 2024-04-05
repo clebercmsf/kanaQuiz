@@ -3,6 +3,12 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /** APP **/
+  --color-primary: #e63946;
+  --color-primary-shade: rgb(220, 37, 70);
+  --color-secondary: #fffbe5;
+  --color-tertiary: #3880ff;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -75,10 +81,6 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
-
-  --color-primary: #e63946;
-  --color-primary-shade: rgb(220, 37, 70);
-  --color-secondary: #fffbe5;
 }
 
 @media (prefers-color-scheme: dark) {

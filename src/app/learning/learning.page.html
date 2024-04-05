@@ -1,11 +1,169 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="main__tollbar">
+  <ion-toolbar class="main__toolbar">
     <ion-buttons slot="start">
-      <ion-back-button default-href="#" (click)="moveToHome()"></ion-back-button>
+      <ion-back-button default-href="#" text="Voltar" class="main__toolbar-button" (click)="moveToHome()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-back-button default-href="#" text="Dakuten" icon="chevron-forward" class="main__toolbar-button" (click)="moveToDakuten()" routerDirection="forward"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div></div>
+  <div class="container">
+    <div class="section__table">
+      <div class="table__header">
+        <h1>Hiragana</h1>
+      </div>
+      <div class="table__content">
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">あ</ion-button>
+          <ion-button (click)="textToSpeak($event)">い</ion-button>
+          <ion-button (click)="textToSpeak($event)">う</ion-button>
+          <ion-button (click)="textToSpeak($event)">え</ion-button>
+          <ion-button (click)="textToSpeak($event)">お</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">か</ion-button>
+          <ion-button (click)="textToSpeak($event)">き</ion-button>
+          <ion-button (click)="textToSpeak($event)">く</ion-button>
+          <ion-button (click)="textToSpeak($event)">け</ion-button>
+          <ion-button (click)="textToSpeak($event)">こ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">さ</ion-button>
+          <ion-button (click)="textToSpeak($event)">し</ion-button>
+          <ion-button (click)="textToSpeak($event)">す</ion-button>
+          <ion-button (click)="textToSpeak($event)">せ</ion-button>
+          <ion-button (click)="textToSpeak($event)">そ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">た</ion-button>
+          <ion-button (click)="textToSpeak($event)">ち</ion-button>
+          <ion-button (click)="textToSpeak($event)">つ</ion-button>
+          <ion-button (click)="textToSpeak($event)">て</ion-button>
+          <ion-button (click)="textToSpeak($event)">と</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">な</ion-button>
+          <ion-button (click)="textToSpeak($event)">に</ion-button>
+          <ion-button (click)="textToSpeak($event)">ぬ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ね</ion-button>
+          <ion-button (click)="textToSpeak($event)">の</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">は</ion-button>
+          <ion-button (click)="textToSpeak($event)">ひ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ふ</ion-button>
+          <ion-button (click)="textToSpeak($event)">へ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ほ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ま</ion-button>
+          <ion-button (click)="textToSpeak($event)">み</ion-button>
+          <ion-button (click)="textToSpeak($event)">む</ion-button>
+          <ion-button (click)="textToSpeak($event)">め</ion-button>
+          <ion-button (click)="textToSpeak($event)">も</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">や</ion-button>
+          <ion-button class="button-hide">や</ion-button>
+          <ion-button (click)="textToSpeak($event)">ゆ</ion-button>
+          <ion-button class="button-hide">や</ion-button>
+          <ion-button (click)="textToSpeak($event)">よ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ら</ion-button>
+          <ion-button (click)="textToSpeak($event)">り</ion-button>
+          <ion-button (click)="textToSpeak($event)">る</ion-button>
+          <ion-button (click)="textToSpeak($event)">れ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ろ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">わ</ion-button>
+          <ion-button class="button-hide">や</ion-button>
+          <ion-button (click)="textToSpeak($event)">を</ion-button>
+          <ion-button class="button-hide">や</ion-button>
+          <ion-button (click)="textToSpeak($event)">ん</ion-button>
+        </div>
+      </div>
+    </div>
+    <div class="section__table">
+      <div class="table__header">
+        <h1>Katakana</h1>
+      </div>
+      <div class="table__content">
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ア</ion-button>
+          <ion-button (click)="textToSpeak($event)">イ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ウ</ion-button>
+          <ion-button (click)="textToSpeak($event)">エ</ion-button>
+          <ion-button (click)="textToSpeak($event)">オ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">カ</ion-button>
+          <ion-button (click)="textToSpeak($event)">キ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ク</ion-button>
+          <ion-button (click)="textToSpeak($event)">ケ</ion-button>
+          <ion-button (click)="textToSpeak($event)">コ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">サ</ion-button>
+          <ion-button (click)="textToSpeak($event)">シ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ス</ion-button>
+          <ion-button (click)="textToSpeak($event)">セ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ソ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">タ</ion-button>
+          <ion-button (click)="textToSpeak($event)">チ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ツ</ion-button>
+          <ion-button (click)="textToSpeak($event)">テ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ト</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ナ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ニ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ヌ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ネ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ノ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ハ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ヒ</ion-button>
+          <ion-button (click)="textToSpeak($event)">フ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ヘ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ホ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">マ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ミ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ム</ion-button>
+          <ion-button (click)="textToSpeak($event)">メ</ion-button>
+          <ion-button (click)="textToSpeak($event)">モ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ヤ</ion-button>
+          <ion-button class="button-hide">ヤ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ユ</ion-button>
+          <ion-button class="button-hide">ヤ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ヨ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ラ</ion-button>
+          <ion-button (click)="textToSpeak($event)">リ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ル</ion-button>
+          <ion-button (click)="textToSpeak($event)">レ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ロ</ion-button>
+        </div>
+        <div class="content-button">
+          <ion-button (click)="textToSpeak($event)">ワ</ion-button>
+          <ion-button class="button-hide">ヤ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ヲ</ion-button>
+          <ion-button class="button-hide">ヤ</ion-button>
+          <ion-button (click)="textToSpeak($event)">ン</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
