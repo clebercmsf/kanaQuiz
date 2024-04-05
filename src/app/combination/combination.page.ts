@@ -1,27 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-dakuten',
-  templateUrl: './dakuten.page.html',
-  styleUrls: ['./dakuten.page.scss'],
+  selector: 'app-combination',
+  templateUrl: './combination.page.html',
+  styleUrls: ['./combination.page.scss'],
 })
-export class DakutenPage implements OnInit {
+export class CombinationPage implements OnInit {
 
-  constructor(private router: Router, private navCtrl: NavController) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  moveToLearning () {
-    this.router.navigate(['/learning']);
-  }
-
-  moveToCombination () {
-    this.navCtrl.navigateForward('/combination', {
-      animationDirection: 'forward'
-    });
+  moveToDakuten () {
+    this.router.navigate(['/dakuten']);
   }
 
   async textToSpeak (ev: any) {

@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./learning/learning.module').then( m => m.LearningPageModule)
   },
   {
+    path: 'combination',
+    loadChildren: () => import('./combination/combination.module').then( m => m.CombinationPageModule)
+  },
+  {
     path: 'dakuten',
     loadChildren: () => import('./dakuten/dakuten.module').then( m => m.DakutenPageModule)
   },
