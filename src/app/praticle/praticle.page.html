@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="main__toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" text="Voltar" class="main__toolbar-button" (click)="moveToHome()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main__container">
+      <ion-list [inset]="true" class="container__list">
+        <ion-item>
+          <ion-checkbox id="">Hiragana</ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox id="">Katakana</ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox id="">Variações</ion-checkbox>
+        </ion-item>
+      </ion-list>
+  </div>
+</ion-content>

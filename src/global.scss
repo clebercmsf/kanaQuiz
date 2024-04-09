@@ -36,6 +36,11 @@
 ion-content {
   --background: var(--color-secondary);
 }
+.main__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 .main__button {
   margin-left: 2rem;
   margin-right: 2rem;
