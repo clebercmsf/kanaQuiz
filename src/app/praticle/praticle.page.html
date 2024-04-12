@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="main__toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" text="Voltar" class="main__toolbar-button" (click)="moveToHome()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="home__container">
+    <div class="home__container-img">
+      <ion-img src="../../assets/logo.png"></ion-img>
+    </div>
+    <ion-list [inset]="true" class="container__list" (click)="enableVariables()">
+      <ion-item>
+        <ion-checkbox id="hiraganaQuiz">Hiragana</ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox id="katakanaQuiz">Katakana</ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox disabled id="variablesQuiz">Variações</ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" class="main__button"><span>PRÁTICA</span></ion-button> 
+  </div>
+</ion-content>

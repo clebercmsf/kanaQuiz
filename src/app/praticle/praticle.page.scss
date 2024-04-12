@@ -1,0 +1,17 @@
+@import "../home/home.page.scss";
+
+.home__container {
+  gap: 3.2rem;
+}
+.container__list ion-item {
+  --background: var(--color-primary);
+  --background-activated: var(--color-primary-shade);
+  --color: var(--color-secondary);
+  
+  ion-checkbox {
+    --checkbox-background: var(--color-primary);
+    --checkbox-background-checked: var(--color-primary);
+    --border-color: var(--color-secondary);
+    --border-color-checked: none;
+  }
+}

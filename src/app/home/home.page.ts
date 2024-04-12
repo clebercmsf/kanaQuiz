@@ -13,4 +13,8 @@ export class HomePage {
   moveToLearning () {
     this.router.navigate(['/learning']);
   }
+
+  moveToPraticle () {
+    this.router.navigate(['/praticle']);
+  }
 }
