@@ -1,4 +1,5 @@
 @import "../home/home.page.scss";
+@import "./quiz.praticle.scss";
 
 .home__container {
   gap: 3.2rem;
@@ -7,6 +8,7 @@
   --background: var(--color-primary);
   --background-activated: var(--color-primary-shade);
   --color: var(--color-secondary);
+  --border-color: transparent;
   
   ion-checkbox {
     --checkbox-background: var(--color-primary);

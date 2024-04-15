@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="home__container">
+  <div class="home__container" style="display: none;">
     <div class="home__container-img">
       <ion-img src="../../assets/logo.png"></ion-img>
     </div>
@@ -23,5 +23,19 @@
       </ion-item>
     </ion-list>
     <ion-button expand="block" class="main__button" disabled id="startQuiz" (click)="generateLetterList()"><span>PRÁTICA</span></ion-button> 
+  </div>
+  <div class="container__quiz">
+    <div class="container__quiz-questions">
+      <span>あ</span>
+      <div class="quiz__answers-container">
+        <button>a</button>
+        <button>ki</button>
+        <button>ra</button>
+        <button>shi</button>
+      </div>
+    </div>
+    <div class="container__quiz-controls">
+      <ion-button expand="block" class="main__button"><span>PRÓXIMO</span></ion-button>
+    </div>
   </div>
 </ion-content>
