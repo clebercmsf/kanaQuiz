@@ -57,7 +57,6 @@ export class PraticlePage implements OnInit {
       letterList.push(...katakanaVariationQuizVariables);
     }
 
-    console.log(letterList);
     return letterList;
   }
 
@@ -67,5 +66,6 @@ export class PraticlePage implements OnInit {
 
     homeContainer.classList.add("hide");
     containerQuiz.classList.remove("hide");
+    const letterList = this.generateLetterList();
   }
 }
