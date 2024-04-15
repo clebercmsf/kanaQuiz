@@ -15,7 +15,7 @@
 .container__quiz-questions {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
 
   span {
     font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -30,10 +30,14 @@
   grid-template-columns: 1fr 1fr;
   gap: .5rem;
 
-  button {
+  ion-button {
     height: 3rem;
-    background: var(--color-primary);
-    color: var(--color-secondary);
-    border-radius: 1rem;
+    --background: var(--color-primary);
+    --background-activated: var(--color-primary-shade);
+    --color: var(--color-secondary);
+    --border-radius: 1rem;
   }
+}
+.hide {
+  display: none;
 }

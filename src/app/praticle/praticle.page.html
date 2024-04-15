@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="home__container" style="display: none;">
+  <div class="home__container">
     <div class="home__container-img">
       <ion-img src="../../assets/logo.png"></ion-img>
     </div>
@@ -22,16 +22,16 @@
         <ion-checkbox disabled id="variablesQuiz">Variações</ion-checkbox>
       </ion-item>
     </ion-list>
-    <ion-button expand="block" class="main__button" disabled id="startQuiz" (click)="generateLetterList()"><span>PRÁTICA</span></ion-button> 
+    <ion-button expand="block" class="main__button" disabled id="startQuiz" (click)="startQuiz()"><span>PRÁTICA</span></ion-button> 
   </div>
-  <div class="container__quiz">
+  <div class="container__quiz hide">
     <div class="container__quiz-questions">
       <span>あ</span>
       <div class="quiz__answers-container">
-        <button>a</button>
-        <button>ki</button>
-        <button>ra</button>
-        <button>shi</button>
+        <ion-button>a</ion-button>
+        <ion-button>ki</ion-button>
+        <ion-button>ra</ion-button>
+        <ion-button>shi</ion-button>
       </div>
     </div>
     <div class="container__quiz-controls">

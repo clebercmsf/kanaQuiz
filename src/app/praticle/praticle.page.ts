@@ -60,4 +60,12 @@ export class PraticlePage implements OnInit {
     console.log(letterList);
     return letterList;
   }
+
+  startQuiz () {
+    const homeContainer: any = document.querySelector(".home__container");
+    const containerQuiz: any = document.querySelector(".container__quiz");
+
+    homeContainer.classList.add("hide");
+    containerQuiz.classList.remove("hide");
+  }
 }
