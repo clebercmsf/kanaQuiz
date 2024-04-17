@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { hiraganaQuizVariables } from './variables/hiragana.variables';
 import { hiraganaVariationQuizVariables } from './variables/hiragana-variations.variables';
@@ -12,10 +12,7 @@ type QuizQuestions = {
 }
 type Quiz = {
   question: QuizQuestions;
-  answer1: QuizQuestions;
-  answer2: QuizQuestions;
-  answer3: QuizQuestions;
-  answer4: QuizQuestions;
+  answers: QuizQuestions[];
 }
 
 @Component({
@@ -27,11 +24,16 @@ type Quiz = {
 export class PraticlePage implements OnInit {
   private letterList: QuizQuestions[] = [];
   private optionsList: QuizQuestions[] = [];
-  private currentQuestion: any = 0;
 
-  constructor (private router: Router) { }
+  showHomeContainer: boolean = true;
+
+  constructor (private router: Router, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit () {
+  }
+
+  updateHomeContainer () {
+    this.showHomeContainer = !this.showHomeContainer;
   }
 
   moveToHome () {
@@ -84,26 +86,24 @@ export class PraticlePage implements OnInit {
     }
 
     this.letterList.push(...letterList);
-    this.optionsList = this.shuffleArray([...letterList]);
+    const optionList = letterList.slice(0,15);
+    this.optionsList = this.shuffleArray([...optionList]);
   }
 
   generateQuestions () {
     const question: QuizQuestions = this.optionsList[0];
-    const trueAnswer = question.value;
+    const trueAnswer = question.letter;
 
     // Filtra 3 respostas erradas, adiciona a resposta correta e as embaralha.
-    let falseAnswers = this.letterList.filter(question => question.value !== trueAnswer);
+    let falseAnswers = this.letterList.filter(question => question.letter !== trueAnswer);
     falseAnswers = this.shuffleArray(falseAnswers);
-    const answers = falseAnswers.slice(0,3);
+    let answers = falseAnswers.slice(0,3);
     answers.push(question);
-    this.shuffleArray(answers);
+    answers = this.shuffleArray(answers);
 
     const newQuestion: Quiz = {
       question: question,
-      answer1: answers[0],
-      answer2: answers[1],
-      answer3: answers[2],
-      answer4: answers[3]
+      answers: answers
     }
 
     this.optionsList.shift();
@@ -113,21 +113,39 @@ export class PraticlePage implements OnInit {
 
   displayNextQuestion () {
     const answersContainer: any = document.querySelector(".quiz__answers-container");
+    const questionText: any = document.getElementById("question");
+    const newQuestion: Quiz = this.generateQuestions();
     
     while (answersContainer.firstChild) {
       answersContainer.removeChild(answersContainer.firstChild);
     }
+    
+    // Cria os elementos de pergunta e alternativas.
+    questionText.textContent = newQuestion.question.letter;
+    for (let i: number = 0; i < 4; i++) {
+      const newAnswer = document.createElement("ion-button");
+      newAnswer.style.setProperty("height", "3rem");
+      newAnswer.style.setProperty("--background", "var(--color-primary)");
+      newAnswer.style.setProperty("--background-activated", "var(--color-primary-shade)");
+      newAnswer.style.setProperty("--color", "var(--color-secondary)");
+      newAnswer.textContent = newQuestion.answers[i].value;
+      
+      if (newQuestion.answers[i].value === newQuestion.question.value) {
+        newAnswer.setAttribute("data-correct", "true");
+      }
+      // newAnswer.addEventListener("click", selectAnswer);
 
 
+      answersContainer.appendChild(newAnswer);
+    }
   }
 
   startQuiz () {
-    const homeContainer: any = document.querySelector(".home__container");
     const containerQuiz: any = document.querySelector(".container__quiz");
-    homeContainer.classList.add("hide");
+    this.updateHomeContainer();
     containerQuiz.classList.remove("hide");
+
     this.generateLetterList();
-    
     this.displayNextQuestion();
   }
 }

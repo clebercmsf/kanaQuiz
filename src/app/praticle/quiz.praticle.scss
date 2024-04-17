@@ -30,14 +30,11 @@
   grid-template-columns: 1fr 1fr;
   gap: .5rem;
 
-  ion-button {
-    height: 3rem;
-    --background: var(--color-primary);
-    --background-activated: var(--color-primary-shade);
-    --color: var(--color-secondary);
-    --border-radius: 1rem;
-  }
-}
-.hide {
-  display: none;
+  // ion-button {
+  //   height: 3rem;
+  //   --background: var(--color-primary);
+  //   --background-activated: var(--color-primary-shade);
+  //   --color: var(--color-secondary);
+  //   --border-radius: 1rem;
+  // }
 }
