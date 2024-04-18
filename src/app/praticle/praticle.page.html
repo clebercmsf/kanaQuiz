@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="showHomeContainer" class="home__container">
+  <section class="home__container" *ngIf="showHomeContainer">
     <div class="home__container-img">
       <ion-img src="../../assets/logo.png"></ion-img>
     </div>
@@ -22,11 +22,13 @@
         <ion-checkbox disabled id="variablesQuiz">Variações</ion-checkbox>
       </ion-item>
     </ion-list>
-    <ion-button expand="block" class="main__button" disabled id="startQuiz" (click)="startQuiz()"><span>COMEÇAR</span></ion-button> 
-  </div>
-  <div class="container__quiz hide">
+    <ion-button expand="block" class="main__button" disabled id="startQuiz" (click)="startQuiz()"><ion-icon name="play"></ion-icon><span>COMEÇAR</span><ion-icon name="play"></ion-icon></ion-button> 
+  </section>
+  <section class="container__quiz hide" >
     <div class="container__quiz-questions">
-      <span id="question"></span>
+      <div class="question">
+        <span id="question"></span>
+      </div>
       <div class="quiz__answers-container">
         <ion-button></ion-button>
         <ion-button></ion-button>
@@ -34,8 +36,17 @@
         <ion-button></ion-button>
       </div>
     </div>
-    <div class="container__quiz-controls">
-      <ion-button expand="block" class="main__button"><span>PRÓXIMO</span></ion-button>
+    <div class="container__quiz-controls" *ngIf="showNextQuestionBtn">
+      <ion-button expand="block" class="main__button" (click)="displayNextQuestion()"><span>PRÓXIMO</span></ion-button>
     </div>
-  </div>
+  </section>
+  <section class="home__container hide" id="precisionContainer">
+    <div class="home__container-img">
+      <span class="precisionPercent"></span>
+    </div>
+    <div class="home__container-button">
+      <ion-button expand="block" class="main__button" (click)="tryAgain()"><ion-icon name="reload"></ion-icon><span>TENTAR NOVAMENTE</span><ion-icon name="reload"></ion-icon></ion-button> 
+      <ion-button expand="block" class="main__button" (click)="moveToHome()"><ion-icon name="home"></ion-icon><span>INÍCIO</span><ion-icon name="home"></ion-icon></ion-button> 
+    </div>
+  </section>
 </ion-content>

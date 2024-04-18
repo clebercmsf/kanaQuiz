@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { hiraganaQuizVariables } from './variables/hiragana.variables';
 import { hiraganaVariationQuizVariables } from './variables/hiragana-variations.variables';
@@ -23,17 +23,24 @@ type Quiz = {
 
 export class PraticlePage implements OnInit {
   private letterList: QuizQuestions[] = [];
-  private optionsList: QuizQuestions[] = [];
+  private questionsList: QuizQuestions[] = [];
+  private totalQuestions: number = 2;
+  private correctAnswers: number = 0;
+  public showHomeContainer: boolean = true;
+  public showNextQuestionBtn: boolean = false;
 
-  showHomeContainer: boolean = true;
 
-  constructor (private router: Router, private cdRef: ChangeDetectorRef) { }
+  constructor (private router: Router) { }
 
   ngOnInit () {
   }
 
   updateHomeContainer () {
     this.showHomeContainer = !this.showHomeContainer;
+  }
+
+  updateNextQuestionBtn () {
+    this.showNextQuestionBtn = !this.showNextQuestionBtn;
   }
 
   moveToHome () {
@@ -86,12 +93,12 @@ export class PraticlePage implements OnInit {
     }
 
     this.letterList.push(...letterList);
-    const optionList = letterList.slice(0,15);
-    this.optionsList = this.shuffleArray([...optionList]);
+    const optionList = letterList.slice(0, this.totalQuestions);
+    this.questionsList = this.shuffleArray([...optionList]);
   }
 
   generateQuestions () {
-    const question: QuizQuestions = this.optionsList[0];
+    const question: QuizQuestions = this.questionsList[0];
     const trueAnswer = question.letter;
 
     // Filtra 3 respostas erradas, adiciona a resposta correta e as embaralha.
@@ -106,24 +113,29 @@ export class PraticlePage implements OnInit {
       answers: answers
     }
 
-    this.optionsList.shift();
+    this.questionsList.shift();
 
     return newQuestion;
   }
 
   displayNextQuestion () {
+    this.resetState();
+
+    if (this.questionsList.length === 0) {
+      const answersContainer: any = document.querySelector(".container__quiz");
+      answersContainer.classList.add("hide");
+      return this.finishQuiz();
+    }
+
     const answersContainer: any = document.querySelector(".quiz__answers-container");
     const questionText: any = document.getElementById("question");
     const newQuestion: Quiz = this.generateQuestions();
-    
-    while (answersContainer.firstChild) {
-      answersContainer.removeChild(answersContainer.firstChild);
-    }
     
     // Cria os elementos de pergunta e alternativas.
     questionText.textContent = newQuestion.question.letter;
     for (let i: number = 0; i < 4; i++) {
       const newAnswer = document.createElement("ion-button");
+      newAnswer.classList.add("answer");
       newAnswer.style.setProperty("height", "3rem");
       newAnswer.style.setProperty("--background", "var(--color-primary)");
       newAnswer.style.setProperty("--background-activated", "var(--color-primary-shade)");
@@ -133,19 +145,63 @@ export class PraticlePage implements OnInit {
       if (newQuestion.answers[i].value === newQuestion.question.value) {
         newAnswer.setAttribute("data-correct", "true");
       }
-      // newAnswer.addEventListener("click", selectAnswer);
-
+      newAnswer.addEventListener("click", this.selectAnswer);
 
       answersContainer.appendChild(newAnswer);
     }
   }
 
-  startQuiz () {
-    const containerQuiz: any = document.querySelector(".container__quiz");
-    this.updateHomeContainer();
-    containerQuiz.classList.remove("hide");
+  resetState () {
+    const answersContainer: any = document.querySelector(".quiz__answers-container");
+    const letterBox: any = document.getElementById("question");
 
+    letterBox.removeAttribute("class");
+    this.showNextQuestionBtn === true ? this.updateNextQuestionBtn() : undefined;
+
+    while (answersContainer.firstChild) {
+      answersContainer.removeChild(answersContainer.firstChild);
+    }
+  }
+
+  selectAnswer = (event: Event) => {
+    const answerClicked = event.target as HTMLElement;
+    const letterBox: any = document.getElementById("question");
+
+    if (answerClicked.dataset['correct']) {
+      letterBox.classList.add("correct");
+      answerClicked.style.setProperty("--background", "var(--color-correct)");
+      this.correctAnswers++;
+    } else {
+      letterBox.classList.add("incorrect");
+      answerClicked.style.setProperty("--background", "var(--color-incorrect)");
+    }
+
+    (document.querySelectorAll(".answer") as NodeListOf<HTMLButtonElement>).forEach(button => {
+      button.disabled = true;
+    });
+
+    this.updateNextQuestionBtn();
+  }
+
+  startQuiz () {
+    this.updateHomeContainer();
+    const answersContainer: any = document.querySelector(".container__quiz");
+    answersContainer.classList.remove("hide");
+    
     this.generateLetterList();
     this.displayNextQuestion();
+  }
+
+  finishQuiz () {
+    const precisionContainer: any = document.getElementById("precisionContainer");
+    const precisionPercent: any = document.querySelector(".precisionPercent");
+    precisionContainer.classList.remove("hide");
+    const performance = Math.floor((this.correctAnswers / this.totalQuestions) * 100);
+    
+    precisionPercent.textContent = `${performance}%`;
+  }
+
+  tryAgain () {
+    window.location.reload();
   }
 }
