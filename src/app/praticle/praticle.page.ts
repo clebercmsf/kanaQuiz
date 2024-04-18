@@ -24,7 +24,7 @@ type Quiz = {
 export class PraticlePage implements OnInit {
   private letterList: QuizQuestions[] = [];
   private questionsList: QuizQuestions[] = [];
-  private totalQuestions: number = 2;
+  private totalQuestions: number = 15;
   private correctAnswers: number = 0;
   public showHomeContainer: boolean = true;
   public showNextQuestionBtn: boolean = false;
