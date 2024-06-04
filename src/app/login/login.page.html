@@ -5,9 +5,9 @@
 <ion-content [fullscreen]="true">
   <section class="home__container authenticator">
     <ion-img src="../../assets/logo.png"></ion-img>
-    <ion-input label="email" label-placement="floating" fill="outline" placeholder="email@email.com"></ion-input>
-    <ion-input label="senha" label-placement="floating" fill="outline" placeholder="senha"></ion-input>
+    <ion-input label="email" label-placement="floating" fill="outline" placeholder="email@email.com" [(ngModel)]="email"></ion-input>
+    <ion-input label="senha" label-placement="floating" fill="outline" placeholder="senha" [(ngModel)]="password"></ion-input>
     <span>Não possui conta? <span class="signup" (click)="moveToSignup()">Crie aqui</span></span>
-    <ion-button expand="block" class="main__button">Entrar</ion-button> 
+    <ion-button expand="block" class="main__button" (click)="login()">Entrar</ion-button> 
   </section>
 </ion-content>

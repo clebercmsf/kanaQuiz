@@ -5,10 +5,16 @@
 <ion-content [fullscreen]="true">
   <section class="home__container authenticator">
     <ion-img src="../../assets/logo.png"></ion-img>
-    <ion-input label="email" label-placement="floating" fill="outline" placeholder="email@email.com"></ion-input>
-    <ion-input label="senha" label-placement="floating" fill="outline" placeholder="senha"></ion-input>
-    <ion-input label="confirma senha" label-placement="floating" fill="outline" placeholder="senha"></ion-input>
+    <ion-input label="email" label-placement="floating" fill="outline" placeholder="email@email.com" [(ngModel)]="email" required></ion-input>
+    <ion-input label="senha" label-placement="floating" fill="outline" placeholder="senha" required></ion-input>
+    <ion-input label="confirma senha" label-placement="floating" fill="outline" placeholder="senha" [(ngModel)]="password" required></ion-input>
     <span>Já possui conta? <span class="signup" (click)="moveToLogin()">Acesse aqui</span></span>
-    <ion-button expand="block" class="main__button">Cadastrar</ion-button> 
+    <ion-button expand="block" class="main__button" id="present-alert" (click)="signup()">Cadastrar</ion-button>
+    <ion-alert class="alert"
+      trigger="present-alert"
+      header="A Short Title Is Best"
+      message="Senhas não conferem."
+      [buttons]="alertButtons">
+    </ion-alert>
   </section>
 </ion-content>
