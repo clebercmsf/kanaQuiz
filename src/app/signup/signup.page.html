@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="home__container authenticator">
+    <ion-img src="../../assets/logo.png"></ion-img>
+    <ion-input label="email" label-placement="floating" fill="outline" placeholder="email@email.com"></ion-input>
+    <ion-input label="senha" label-placement="floating" fill="outline" placeholder="senha"></ion-input>
+    <ion-input label="confirma senha" label-placement="floating" fill="outline" placeholder="senha"></ion-input>
+    <span>Já possui conta? <span class="signup" (click)="moveToLogin()">Acesse aqui</span></span>
+    <ion-button expand="block" class="main__button">Cadastrar</ion-button> 
+  </section>
+</ion-content>

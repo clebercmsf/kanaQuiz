@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'praticle',
     loadChildren: () => import('./praticle/praticle.module').then( m => m.PraticlePageModule)
   },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 
 ];
 

@@ -45,6 +45,9 @@ export class PraticlePage implements OnInit {
 
   moveToHome () {
     this.router.navigate(['/home']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
   }
 
   enableVariables () {
@@ -93,7 +96,7 @@ export class PraticlePage implements OnInit {
     }
 
     this.letterList.push(...letterList);
-    const optionList = letterList.slice(0, this.totalQuestions);
+    const optionList = letterList.slice(0, 2);
     this.questionsList = this.shuffleArray([...optionList]);
   }
 
@@ -198,7 +201,7 @@ export class PraticlePage implements OnInit {
     precisionContainer.classList.remove("hide");
     const performance = Math.floor((this.correctAnswers / this.totalQuestions) * 100);
     
-    precisionPercent.textContent = `${performance}%`;
+    precisionPercent.textContent = `você foi\n${performance}%\npreciso`;
   }
 
   tryAgain () {

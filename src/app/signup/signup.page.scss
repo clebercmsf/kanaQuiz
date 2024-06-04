@@ -1,0 +1,18 @@
+@import "../home/home.page.scss";
+@import "../../global.scss";
+
+ion-input {
+  --color: var(--color-primary);
+  --placeholder-color: var(--color-primary-shade);
+  --highlight-color-focused: var(--color-primary-shade);
+}
+.authenticator {
+  gap: .8rem;
+  text-align: center;
+  color: var(--color-primary);
+}
+.signup {
+  color: var(--color-incorrect);
+  text-decoration: underline;
+  cursor: pointer;
+}

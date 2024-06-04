@@ -1,21 +1,19 @@
 .container__quiz {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  color: var(--color-primary);
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  min-width: 25rem;
+  padding: 2rem;
+  position: absolute;
+  margin-top: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-primary);
 }
 .container__quiz-questions {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 
   span {
     font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -42,8 +40,10 @@
   display: none;
 }
 .precisionPercent {
+  padding: 2rem;
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 8rem;
+  text-align: center;
+  font-size: 5rem;
   font-weight: 600;
   color: var(--color-primary);
 }
