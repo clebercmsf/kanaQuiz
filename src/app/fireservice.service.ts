@@ -17,8 +17,12 @@ export class FireserviceService {
     return this.auth.createUserWithEmailAndPassword(data.email, data.password);
   }
 
-  saveDetails (data: { uid: any; }) {
-    return this.firestore.collection("users").doc(data.uid).set(data);
+  saveDetails(data: { uid: any; email: string; password: string; }) {
+    return this.firestore.collection("users").doc(data.uid).set({
+      email: data.email,
+      password: data.password,
+      uid: data.uid
+    });
   }
 
   getDetails (data: { uid: any; }) {

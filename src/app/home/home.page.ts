@@ -10,11 +10,24 @@ export class HomePage {
 
   constructor(private router: Router) {}
 
+  ngOnInit() {
+    this.authenticate();
+  }
+
   moveToLearning () {
     this.router.navigate(['/learning']);
   }
 
   moveToPraticle () {
     this.router.navigate(['/praticle']);
+  }
+
+  moveToLogin () {
+    this.router.navigate(['/login']);
+  }
+
+  authenticate () {
+    const isAuthenticate = localStorage.getItem("kanaQuiz-usr");
+    isAuthenticate ? null : this.moveToLogin();
   }
 }

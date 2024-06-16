@@ -16,21 +16,37 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  moveToHome () {
+    this.router.navigate(['/']);
+  }
+
   moveToSignup () {
     this.router.navigate(['/signup']);
   }
 
-  login () {
-    this.fireService.loginWithEmail({email: this.email, password: this.password}).then(res => {
-      if (res.user === null) throw new Error;
+  login() {
+    this.fireService.loginWithEmail({ email: this.email, password: this.password }).then(res => {
+      if (res.user === null) {
+        throw new Error("Usuário não encontrado");
+      }
       if (res.user.uid) {
-        this.fireService.getDetails({uid: res.user.uid}).subscribe(res => {
-          console.log(res);
+        this.fireService.getDetails({ uid: res.user.uid }).subscribe(res => {
+          const data = {
+            user: this.email,
+            password: this.password
+          }
+          const dataString = JSON.stringify(data);
+          localStorage.setItem("kanaQuiz-usr", dataString);
+          this.email = "";
+          this.password = "";
+          alert("Login efetuado com sucesso!");
+          this.moveToHome();
+        }, err => {
+          alert("Erro ao obter detalhes do usuário: " + err.message);
         });
       }
-    }), (err: { message: string; }) => {
-      alert(err.message);
-      console.log(err);
-    }
+    }).catch(err => {
+      alert("Erro ao efetuar login: " + err.message);
+    });
   }
 }

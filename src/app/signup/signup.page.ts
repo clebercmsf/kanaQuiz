@@ -10,7 +10,7 @@ import { FireserviceService } from '../fireservice.service';
 export class SignupPage implements OnInit {
   public email: string = "";
   public password: string = "";
-  alertButtons = ['Action'];
+  public confpassword: string = "";
 
   constructor(private router: Router, public fireService: FireserviceService) { }
 
@@ -22,23 +22,30 @@ export class SignupPage implements OnInit {
   }
 
   signup () {
-    this.fireService.signup({email: this.email, password: this.password}).then(res => {
-      if (res.user === null) throw new Error;
-      if (res.user.uid) {
-        const data = {
-          email: this.email,
-          password: this.password,
-          uid: res.user.uid
+    if (this.password === this.confpassword) {
+      this.fireService.signup({email: this.email, password: this.password}).then(res => {
+        if (res.user === null) throw new Error;
+        if (res.user.uid) {
+          const data = {
+            email: this.email,
+            password: this.password,
+            uid: res.user.uid
+          }
+  
+          this.fireService.saveDetails(data).then(() => {
+            this.email = "";
+            this.password = "";
+            this.confpassword = "";
+            this.moveToLogin()
+          }, err => {
+            alert(err.message);
+          });
         }
-
-        this.fireService.saveDetails(data).then(res => {
-          console.log(res);
-        }, err => {
-          console.log(err.message);
-        });
-      }
-    }, err => {
-      console.log(err.message);
-    });
+      }, err => {
+        alert(err.message);
+      });
+    } else {
+      alert("Senhas não conferem!");
+    }
   }
 }
