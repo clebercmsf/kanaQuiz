@@ -87,17 +87,28 @@ export class PraticlePage implements OnInit {
 
     if (hiraganaQuiz.checked) {
       letterList.push(...hiraganaQuizVariables);
-    } if (katakanaQuiz.checked) {
+    }
+    
+    if (katakanaQuiz.checked) {
       letterList.push(...katakanaQuizVariables);
-    }if (hiraganaQuiz.checked && variablesQuiz.checked) {
+    }
+    
+    if (hiraganaQuiz.checked && variablesQuiz.checked) {
       letterList.push(...hiraganaVariationQuizVariables);
-    } if (katakanaQuiz.checked && variablesQuiz.checked) {
+    }
+    
+    if (katakanaQuiz.checked && variablesQuiz.checked) {
       letterList.push(...katakanaVariationQuizVariables);
     }
 
     this.letterList.push(...letterList);
-    const optionList = letterList.slice(0, 2);
-    this.questionsList = this.shuffleArray([...optionList]);
+    const optionList = this.shuffleArray(letterList);
+    this.questionsList = optionList.slice(0, this.totalQuestions);
+
+    console.log("Lista de letras:")
+    console.log(this.letterList);
+    console.log("Lista de questoes:")
+    console.log(this.questionsList)
   }
 
   generateQuestions () {
